@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Khula&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+.body {
+    /*color: :#fff;*/
+    font-family: 'Khula', sans-serif;
+    height: 100vh;
+    font-size: 2rem;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(#ffffff, #485563);
+}
+
+.screen.up {
+    margin-top: -100vh;
+}
+
+.title {
+    line-height: 1.4;
+    font-size: 4rem;
+}
+
+.start-button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.start-button:hover {
+    color: #485563;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.set-time-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.set-time-list__item {
+    margin: 10px;
+}
+
+.set-time-list__button {
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.set-time-list__button:hover {
+    color: #485563;
+    border: 2px solid #0ee6f1;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 500px;
+    height: 500px;
+    /*background: linear-gradient();*/
+    box-shadow: -8px -8px 20px #fff, 10px 7px 20px #3a3a3a;
+    border-radius: 30px;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    /*background: linear-gradient();*/
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+}
