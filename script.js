@@ -1,8 +1,16 @@
 const startBtn= document.getElementById('start-button')
-const cards = document.querySelectorAll('.screen')
+const screens = document.querySelectorAll('.screen')
 const timeController = document.getElementById('set-time-list')
 const timeEl = document.getElementById('time')
 const boardEl = document.getElementById('board')
+const scoreText = document.getElementById('score-text')
+const againBtn = document.getElementById( 'again-button')
+const resetBtn = document.getElementById( 'reset-button')
+const modal = document.getElementById( 'dm-overlay')
+
+
+
+console.log(modal)
 
 let time = 0
 let score = 0
@@ -12,7 +20,7 @@ startBtn.addEventListener('click', handlerStartBtn)
 
 function handlerStartBtn(e) {
     e.preventDefault()
-    cards[0].classList.add('up')
+    screens[0].classList.add('up')
 
 
 }
@@ -21,8 +29,9 @@ timeController.addEventListener('click', handlerTimeController)
 
 function handlerTimeController(e) {
     if (e.target.classList.contains('set-time-list__button')) {
-        cards[1].classList.add('up')
+        screens[1].classList.add('up')
         time = parseInt(e.target.dataset.time)
+        console.log(e.target.classList.contains)
         startGame()
 
     }
@@ -82,10 +91,29 @@ function decTime() {
     }
 }
 
-function finishGame() {
+function finishGame(e) {
     clearInterval(idSetInterval)
     timeEl.parentNode.style.visibility = 'hidden'
-    boardEl.innerHTML = `<p>Your Score: ${score}</p>`
+    scoreText.innerHTML = `<p>Your Score: ${score}</p>`
+    // boardEl.innerHTML = `<a href="#dm-overlay"">result</a>`
+    e.target.remove()
 }
 
+againBtn.addEventListener('click', handlerAgainBtn)
 
+function handlerAgainBtn() {
+    screens[0].classList.remove('up')
+    screens[1].classList.remove('up')
+    modal.style.display = 'none'
+}
+
+resetBtn.addEventListener('click', handlerResetBtn)
+
+function handlerResetBtn(e) {
+    screens[0].classList.remove('up')
+    screens[1].classList.remove('up')
+
+    location.reload()
+    modal.style.display = 'none'
+    e.target.remove()
+}
