@@ -8,10 +8,6 @@ const againBtn = document.getElementById( 'again-button')
 const resetBtn = document.getElementById( 'reset-button')
 const modal = document.getElementById( 'dm-overlay')
 
-
-
-console.log(modal)
-let timeMain
 let time = 0
 let score = 0
 let idSetInterval = null
@@ -21,8 +17,6 @@ startBtn.addEventListener('click', handlerStartBtn)
 function handlerStartBtn(e) {
     e.preventDefault()
     screens[0].classList.add('up')
-
-
 }
 
 timeController.addEventListener('click', handlerTimeController)
@@ -87,7 +81,6 @@ function decTime() {
         if (current < 10) {
             current = `0${current}`
         }
-        timeMain = parseInt(e.target.dataset.time);
         setTime(current)
     }
 }
@@ -103,19 +96,14 @@ function finishGame(e) {
 againBtn.addEventListener('click', handlerAgainBtn)
 
 function handlerAgainBtn() {
-
     modal.style.display = "none";
     timeEl.parentNode.style.visibility = "visible";
-    time = timeMain;
-    score = 0;
-    idSetInterval = null;
-    
 }
 
 resetBtn.addEventListener('click', handlerResetBtn)
 
 function handlerResetBtn(e) {
-    modal.style.display = 'none'
+    modal.style.display = 'none';
     location.reload();
     e.preventDefault();
     screens[0].classList.add("up");
