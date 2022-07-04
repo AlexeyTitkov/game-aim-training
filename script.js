@@ -11,7 +11,7 @@ const modal = document.getElementById( 'dm-overlay')
 
 
 console.log(modal)
-
+let timeMain
 let time = 0
 let score = 0
 let idSetInterval = null
@@ -31,7 +31,7 @@ function handlerTimeController(e) {
     if (e.target.classList.contains('set-time-list__button')) {
         screens[1].classList.add('up')
         time = parseInt(e.target.dataset.time)
-        console.log(e.target.classList.contains)
+        timeMain = parseInt(e.target.dataset.time);
         startGame()
 
     }
@@ -87,6 +87,7 @@ function decTime() {
         if (current < 10) {
             current = `0${current}`
         }
+        timeMain = parseInt(e.target.dataset.time);
         setTime(current)
     }
 }
@@ -95,25 +96,29 @@ function finishGame(e) {
     clearInterval(idSetInterval)
     timeEl.parentNode.style.visibility = 'hidden'
     scoreText.innerHTML = `<p>Your Score: ${score}</p>`
-    // boardEl.innerHTML = `<a href="#dm-overlay"">result</a>`
+    modal.style.display = "block";
     e.target.remove()
 }
 
 againBtn.addEventListener('click', handlerAgainBtn)
 
 function handlerAgainBtn() {
-    screens[0].classList.remove('up')
-    screens[1].classList.remove('up')
-    modal.style.display = 'none'
+
+    modal.style.display = "none";
+    timeEl.parentNode.style.visibility = "visible";
+    time = timeMain;
+    score = 0;
+    idSetInterval = null;
+    
 }
 
 resetBtn.addEventListener('click', handlerResetBtn)
 
 function handlerResetBtn(e) {
-    screens[0].classList.remove('up')
-    screens[1].classList.remove('up')
-
-    location.reload()
     modal.style.display = 'none'
-    e.target.remove()
+    location.reload();
+    e.preventDefault();
+    screens[0].classList.add("up");
+
+    
 }
